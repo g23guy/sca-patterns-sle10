@@ -11,6 +11,7 @@
 %define patuser root
 %define patgrp root
 %define patdir /var/opt/%{produser}/patterns
+%define mode 544
 %define category SLE
 
 Name:         sca-patterns-sle10
@@ -49,12 +50,12 @@ install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp1
 install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
 install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
 install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
-install -m 544 patterns/%{category}/sle10all/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10all
-install -m 544 patterns/%{category}/sle10sp0/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp0
-install -m 544 patterns/%{category}/sle10sp1/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp1
-install -m 544 patterns/%{category}/sle10sp2/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
-install -m 544 patterns/%{category}/sle10sp3/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
-install -m 544 patterns/%{category}/sle10sp4/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
+install -m %{mode} patterns/%{category}/sle10all/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10all
+install -m %{mode} patterns/%{category}/sle10sp0/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp0
+install -m %{mode} patterns/%{category}/sle10sp1/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp1
+install -m %{mode} patterns/%{category}/sle10sp2/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
+install -m %{mode} patterns/%{category}/sle10sp3/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
+install -m %{mode} patterns/%{category}/sle10sp4/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
 
 %files
 %defattr(-,%{patuser},%{patgrp})
@@ -67,12 +68,12 @@ install -m 544 patterns/%{category}/sle10sp4/* $RPM_BUILD_ROOT/%{patdir}/%{categ
 %dir %{patdir}/%{category}/sle10sp2
 %dir %{patdir}/%{category}/sle10sp3
 %dir %{patdir}/%{category}/sle10sp4
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10all/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp0/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp1/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp2/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp3/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp4/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10all/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp0/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp1/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp2/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp3/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp4/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
