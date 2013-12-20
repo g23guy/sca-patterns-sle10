@@ -1,6 +1,3 @@
-#
-# spec file for package scdiag (Version 1.1)
-#
 # Copyright (C) 2013 SUSE LLC
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
@@ -14,6 +11,7 @@
 %define patuser root
 %define patgrp root
 %define patdir /var/opt/%{produser}/patterns
+%define category SLE
 
 Name:         sca-patterns-sle10
 Summary:      Supportconfig Analysis Patterns for SLE10
@@ -22,7 +20,7 @@ Distribution: SUSE Linux Enterprise
 Vendor:       SUSE Support
 License:      GPLv2
 Autoreqprov:  on
-Version:      1.1
+Version:      1.2
 Release:      1
 Source:       %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}
@@ -36,35 +34,51 @@ Authors:
 --------
     Jason Record <jrecord@suse.com>
 
-%files
-%defattr(-,%{patuser},%{patgrp})
-%dir /var/opt/%{produser}
-%dir %{patdir}
-%dir %{patdir}/SLE
-%dir %{patdir}/SLE/sle10all
-%dir %{patdir}/SLE/sle10sp0
-%dir %{patdir}/SLE/sle10sp1
-%dir %{patdir}/SLE/sle10sp2
-%dir %{patdir}/SLE/sle10sp3
-%dir %{patdir}/SLE/sle10sp4
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10all/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10sp0/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10sp1/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10sp2/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10sp3/*
-%attr(555,%{patuser},%{patgrp}) %{patdir}/SLE/sle10sp4/*
-
 %prep
 %setup -q
 
 %build
-make build
 
 %install
-make install
+pwd;ls -la
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10all
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp0
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp1
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
+install -d $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
+install -m 544 patterns/%{category}/sle10all/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10all
+install -m 544 patterns/%{category}/sle10sp0/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp0
+install -m 544 patterns/%{category}/sle10sp1/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp1
+install -m 544 patterns/%{category}/sle10sp2/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
+install -m 544 patterns/%{category}/sle10sp3/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
+install -m 544 patterns/%{category}/sle10sp4/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
+
+%files
+%defattr(-,%{patuser},%{patgrp})
+%dir /var/opt/%{produser}
+%dir %{patdir}
+%dir %{patdir}/%{category}
+%dir %{patdir}/%{category}/sle10all
+%dir %{patdir}/%{category}/sle10sp0
+%dir %{patdir}/%{category}/sle10sp1
+%dir %{patdir}/%{category}/sle10sp2
+%dir %{patdir}/%{category}/sle10sp3
+%dir %{patdir}/%{category}/sle10sp4
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10all/*
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp0/*
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp1/*
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp2/*
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp3/*
+%attr(555,%{patuser},%{patgrp}) %{patdir}/%{category}/sle10sp4/*
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Wed Dec 18 2013 jrecord@suse.com
+* Wed Dec 20 2013 jrecord@suse.com
 - separated as individual RPM package
 - added
   firefox-SUSE-SU-2013_1678-1d.pl sle10sp4
