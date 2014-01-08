@@ -16,10 +16,11 @@
 
 Name:         sca-patterns-sle10
 Summary:      Supportconfig Analysis Patterns for SLE10
+URL:          https://bitbucket.org/g23guy/sca-patterns-sle10
 Group:        Documentation/SuSE
 Distribution: SUSE Linux Enterprise
 Vendor:       SUSE Support
-License:      GPLv2
+License:      GPL-2.0
 Autoreqprov:  on
 Version:      1.2
 Release:      1
