@@ -1,8 +1,8 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 
-# Title:       BNX2 Network Driver Package Loss
-# Description: The BNX2 kernel module that shipped with the SLES10 has a been observed with a high ratio of dropped packets.
-# Modified:    2013 Jun 24
+# Title:       Basic Health Check - Tainted Kernel
+# Description: Checks if the kernel is tainted or not
+# Modified:    2013 Jun 20
 
 ##############################################################################
 #  Copyright (C) 2013 SUSE LLC
@@ -24,6 +24,7 @@
 #  Authors/Contributors:
 #     Jason Record (jrecord@suse.com)
 #
+#
 ##############################################################################
 
 ##############################################################################
@@ -40,63 +41,74 @@ use SDP::SUSE;
 ##############################################################################
 
 @PATTERN_RESULTS = (
-	PROPERTY_NAME_CLASS."=SLE",
-	PROPERTY_NAME_CATEGORY."=Network",
-	PROPERTY_NAME_COMPONENT."=Driver",
+	PROPERTY_NAME_CLASS."=Basic Health",
+	PROPERTY_NAME_CATEGORY."=SLE",
+	PROPERTY_NAME_COMPONENT."=Kernel",
 	PROPERTY_NAME_PATTERN_ID."=$PATTERN_ID",
 	PROPERTY_NAME_PRIMARY_LINK."=META_LINK_TID",
 	PROPERTY_NAME_OVERALL."=$GSTATUS",
 	PROPERTY_NAME_OVERALL_INFO."=None",
-	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=7002506",
-	"META_LINK_BUG=https://bugzilla.novell.com/show_bug.cgi?id=417938"
+	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=3582750"
 );
 
-use constant SLES10SP1 => '2.6.16.46-0.12';
-
 ##############################################################################
-# Program execution functions
+# Feature Subroutines
 ##############################################################################
 
-sub packetsDropped {
-	printDebug('>', 'packetsDropped');
-	my $RCODE        = 0;
-	my $FILE_OPEN    = 'network.txt';
-	my $SECTION      = 'ifconfig -a';
-	my @CONTENT      = ();
-	my $LINE         = 0;
+sub checkKernelTaint() {
+	SDP::Core::printDebug('> checkKernelTaint');
+	my $RCODE = 0;
+	my $FILE_OPEN = 'basic-health-check.txt';
+	my $SECTION = '/proc/sys/kernel/tainted';
+	my @CONTENT = ();
+	my @LINE_CONTENT = ();
+	my $LINE = 0;
+	my $TAINT = 0;
+	my $TAINT_STR = '';
 
 	if ( SDP::Core::getSection($FILE_OPEN, $SECTION, \@CONTENT) ) {
-		foreach $_ (@CONTENT) {
-			$LINE++;
-			if ( /dropped\:(\d+)/i ) {
-				printDebug("LINE $LINE", $_);
-				$RCODE++ if ( $1 > 0 );
+		$TAINT = $CONTENT[0];
+		$RCODE = 1 if ( $TAINT != 0 );
+		for $_ (@CONTENT) {
+			if ( /Kernel Status.*Tainted/i ) {
+				s/\s+/ /g; # change to single space
+				s/\s+$//; # remove trailing whitespace
+				$TAINT_STR = $_;
+				last;
 			}
 		}
 	} else {
 		SDP::Core::updateStatus(STATUS_ERROR, "Cannot find \"$SECTION\" section in $FILE_OPEN");
 	}
-	printDebug("< Return: $RCODE", 'packetsDropped');
+	if ( $RCODE ) {
+		my $XTAINT = $TAINT_STR;
+		$XTAINT =~ s/\s*//g; # remove all white space
+		(undef, $XTAINT) = split(/:/, $XTAINT);
+		SDP::Core::printDebug('  checkKernelTaint XTAINT', $XTAINT);
+		if ( $XTAINT !~ m/X/i ) {
+			my %HOST_INFO = SDP::SUSE::getHostInfo();
+			if ( $HOST_INFO{'oes'} ) {
+				SDP::Core::updateStatus(STATUS_WARNING, "$TAINT_STR; Check non-OES drivers");
+			} else {
+				SDP::Core::updateStatus(STATUS_CRITICAL, "$TAINT_STR");
+			}
+		} else {
+			SDP::Core::updateStatus(STATUS_SUCCESS, "$TAINT_STR, but modules are externally supported");
+		}
+	} else {
+		SDP::Core::updateStatus(STATUS_SUCCESS, "The Kernel is not Tainted");
+	}
+	SDP::Core::printDebug("< checkKernelTaint", "Returns: $RCODE");
 	return $RCODE;
 }
 
-SDP::Core::processOptions();
-	my %DRIVER_INFO = SDP::SUSE::getDriverInfo('bnx2');
 
-	if ( $DRIVER_INFO{'loaded'} ) {
-		if ( SDP::SUSE::compareKernel(SLES10SP1) >= 0 && SDP::SUSE::compareDriver('bnx2', '1.6.7c') <= 0 ) {
-			if ( packetsDropped() ) {
-				SDP::Core::updateStatus(STATUS_CRITICAL, "Packet loss with bnx2 driver detected");
-			} else {
-				SDP::Core::updateStatus(STATUS_WARNING, "Potential packet loss with bnx2 driver detected");
-			}
-		} else {
-			SDP::Core::updateStatus(STATUS_ERROR, "Outside kernel scope, skipping bnx2 driver issue");
-		}
-	} else {
-		SDP::Core::updateStatus(STATUS_ERROR, "BNX2 Driver not in use");
-	}
+##############################################################################
+# Main
+##############################################################################
+
+SDP::Core::processOptions(); 
+checkKernelTaint();
 SDP::Core::printPatternResults();
-
 exit;
 

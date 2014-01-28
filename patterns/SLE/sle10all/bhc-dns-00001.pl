@@ -1,7 +1,7 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 
-# Title:       BNX2 Network Driver Package Loss
-# Description: The BNX2 kernel module that shipped with the SLES10 has a been observed with a high ratio of dropped packets.
+# Title:       DNS Basic Service Pattern
+# Description: Checks to see if the service is installed, valid and running
 # Modified:    2013 Jun 24
 
 ##############################################################################
@@ -20,10 +20,10 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-#
+
 #  Authors/Contributors:
-#     Jason Record (jrecord@suse.com)
-#
+#   Jason Record (jrecord@suse.com)
+
 ##############################################################################
 
 ##############################################################################
@@ -40,61 +40,28 @@ use SDP::SUSE;
 ##############################################################################
 
 @PATTERN_RESULTS = (
-	PROPERTY_NAME_CLASS."=SLE",
-	PROPERTY_NAME_CATEGORY."=Network",
-	PROPERTY_NAME_COMPONENT."=Driver",
+	PROPERTY_NAME_CLASS."=Basic Health",
+	PROPERTY_NAME_CATEGORY."=SLE",
+	PROPERTY_NAME_COMPONENT."=DNS",
 	PROPERTY_NAME_PATTERN_ID."=$PATTERN_ID",
 	PROPERTY_NAME_PRIMARY_LINK."=META_LINK_TID",
 	PROPERTY_NAME_OVERALL."=$GSTATUS",
 	PROPERTY_NAME_OVERALL_INFO."=None",
-	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=7002506",
-	"META_LINK_BUG=https://bugzilla.novell.com/show_bug.cgi?id=417938"
+	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=7001417"
 );
-
-use constant SLES10SP1 => '2.6.16.46-0.12';
 
 ##############################################################################
 # Program execution functions
 ##############################################################################
 
-sub packetsDropped {
-	printDebug('>', 'packetsDropped');
-	my $RCODE        = 0;
-	my $FILE_OPEN    = 'network.txt';
-	my $SECTION      = 'ifconfig -a';
-	my @CONTENT      = ();
-	my $LINE         = 0;
-
-	if ( SDP::Core::getSection($FILE_OPEN, $SECTION, \@CONTENT) ) {
-		foreach $_ (@CONTENT) {
-			$LINE++;
-			if ( /dropped\:(\d+)/i ) {
-				printDebug("LINE $LINE", $_);
-				$RCODE++ if ( $1 > 0 );
-			}
-		}
-	} else {
-		SDP::Core::updateStatus(STATUS_ERROR, "Cannot find \"$SECTION\" section in $FILE_OPEN");
-	}
-	printDebug("< Return: $RCODE", 'packetsDropped');
-	return $RCODE;
-}
-
 SDP::Core::processOptions();
-	my %DRIVER_INFO = SDP::SUSE::getDriverInfo('bnx2');
-
-	if ( $DRIVER_INFO{'loaded'} ) {
-		if ( SDP::SUSE::compareKernel(SLES10SP1) >= 0 && SDP::SUSE::compareDriver('bnx2', '1.6.7c') <= 0 ) {
-			if ( packetsDropped() ) {
-				SDP::Core::updateStatus(STATUS_CRITICAL, "Packet loss with bnx2 driver detected");
-			} else {
-				SDP::Core::updateStatus(STATUS_WARNING, "Potential packet loss with bnx2 driver detected");
-			}
-		} else {
-			SDP::Core::updateStatus(STATUS_ERROR, "Outside kernel scope, skipping bnx2 driver issue");
-		}
+	my @EXCLUDE = qw(/opt/novell/eDirectory/lib);
+	if ( packageInstalled('novell-bind') ) {
+		SDP::SUSE::serviceHealth('dns.txt', 'novell-bind', 'novell-named', \@EXCLUDE);
+	} elsif ( packageInstalled('bind') ) {
+		SDP::SUSE::serviceHealth('dns.txt', 'bind', 'named');
 	} else {
-		SDP::Core::updateStatus(STATUS_ERROR, "BNX2 Driver not in use");
+		SDP::Core::updateStatus(STATUS_ERROR, "Basic Service Health; Packages Not Installed: novell-bind or bind");
 	}
 SDP::Core::printPatternResults();
 

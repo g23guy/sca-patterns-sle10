@@ -1,8 +1,8 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
-# Title:       Network Problems with nVidia MCP55 network Devices
-# Description: Sun Fire network cards reporting errors or failing at boot
-# Modified:    2013 Jun 24
+# Title:       Basic Health Check - CPU Context switches per second
+# Description: Checks if the host's CPU Context switches are within normal parameters.
+# Modified:    2013 Jun 20
 
 ##############################################################################
 #  Copyright (C) 2013 SUSE LLC
@@ -20,10 +20,11 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
+#
 #  Authors/Contributors:
-#   Jason Record (jrecord@suse.com)
-
+#     Jason Record (jrecord@suse.com) - original BASH script
+#
+#
 ##############################################################################
 
 ##############################################################################
@@ -31,85 +32,81 @@
 ##############################################################################
 
 use strict;
-use warnings;
+use warnings;    # should be same as -w command option
 use SDP::Core;
 use SDP::SUSE;
-use constant NIC_A => 0x0373;
-use constant NIC_B => 0x0057;
 
 ##############################################################################
 # Overriden (eventually or in part) from SDP::Core Module
 ##############################################################################
 
 @PATTERN_RESULTS = (
-	PROPERTY_NAME_CLASS."=SLE",
-	PROPERTY_NAME_CATEGORY."=Network",
-	PROPERTY_NAME_COMPONENT."=NIC",
+	PROPERTY_NAME_CLASS."=Basic Health",
+	PROPERTY_NAME_CATEGORY."=SLE",
+	PROPERTY_NAME_COMPONENT."=Kernel",
 	PROPERTY_NAME_PATTERN_ID."=$PATTERN_ID",
 	PROPERTY_NAME_PRIMARY_LINK."=META_LINK_TID",
 	PROPERTY_NAME_OVERALL."=$GSTATUS",
 	PROPERTY_NAME_OVERALL_INFO."=None",
-	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=7006203",
-	"META_LINK_BUG=https://bugzilla.novell.com/show_bug.cgi?id=570823"
+	"META_LINK_TID=http://www.suse.com/support/kb/doc.php?id=7002720"
 );
 
-my %AFFECTED_NICS = ();
-
 ##############################################################################
-# Local Function Definitions
+# Feature Subroutines
 ##############################################################################
 
-sub nicsAffected {
-	SDP::Core::printDebug('> nicsAffected', 'BEGIN');
+# Check CPU Context switches per second
+sub checkCPUcs() {
+	printDebug('> checkCPUcs');
+	use constant HEADER_LINES  => 4;
+	use constant CS_FIELD      => 11;
 	my $RCODE = 0;
-	my $FILE_OPEN = 'network.txt';
-	my $SECTION = 'hwinfo --netcard';
+	my $FILE_OPEN = 'basic-health-check.txt';
+	my $SECTION = 'vmstat 1 4';
 	my @CONTENT = ();
+	my $LINE = 0;
+	my @VMDATA = ();
+	my $IAVG = 0;
+	my $LIMIT_CPURED = 10000;
+	my $LIMIT_CPUYEL = 8000;
+
+	if ( SDP::SUSE::compareKernel(SLE11GA) >= 0 ) {
+		$LIMIT_CPURED = 60000;
+		$LIMIT_CPUYEL = 30000;
+	}
 
 	if ( SDP::Core::getSection($FILE_OPEN, $SECTION, \@CONTENT) ) {
 		foreach $_ (@CONTENT) {
-			next if ( m/^\s*$/ ); # Skip blank lines
-			if ( /Device:\s+pci\s+0x0373/i ) {
-				SDP::Core::printDebug("PROCESSING", $_);
-				$AFFECTED_NICS{NIC_A} = 1;
-			} elsif ( /Device:\s+pci\s+0x0057/i ) {
-				SDP::Core::printDebug("PROCESSING", $_);
-				$AFFECTED_NICS{NIC_B} = 1;
-			}
+			$LINE++;
+			next if ( $LINE < HEADER_LINES );
+			next if ( m/^$/ );
+			$_ =~ s/^\s+//;
+			printDebug("  checkCPUcs LINE $LINE", $_);
+			@VMDATA = split(/\s+/, $_);
+			$IAVG += $VMDATA[CS_FIELD];
+			printDebug("  checkCPUcs CS/IAVG", $VMDATA[CS_FIELD] . "/" . $IAVG);
 		}
-		if ( scalar keys %AFFECTED_NICS > 0 ) {
-			$RCODE = 1;
+		$IAVG = sprintf("%u", ($IAVG /= 3));
+		if ( $IAVG >= $LIMIT_CPURED ) {
+			SDP::Core::updateStatus(STATUS_CRITICAL, "Context switches per second: $IAVG meets or exceeds $LIMIT_CPURED");
+		} elsif ( $IAVG >= $LIMIT_CPUYEL ) {
+			SDP::Core::updateStatus(STATUS_WARNING, "Context switches per second: $IAVG meets or exceeds $LIMIT_CPUYEL");
+		} else {
+			SDP::Core::updateStatus(STATUS_SUCCESS, "Context switches per second observed: $IAVG");
 		}
 	} else {
-		SDP::Core::updateStatus(STATUS_ERROR, "ERROR: nicsAffected(): Cannot find \"$SECTION\" section in $FILE_OPEN");
+		SDP::Core::updateStatus(STATUS_ERROR, "Cannot find \"$SECTION\" section in $FILE_OPEN");
 	}
-	SDP::Core::printDebug("< nicsAffected", "Returns: $RCODE");
+	printDebug('< checkCPUcs', 'Returns $RCODE');
 	return $RCODE;
 }
 
 ##############################################################################
-# Main Program Execution
+# Main
 ##############################################################################
 
 SDP::Core::processOptions();
-	if ( SDP::SUSE::compareKernel(SLE10SP3) >= 0 && SDP::SUSE::compareKernel('2.6.16.60-0.66.1') < 0) {
-		if ( nicsAffected() ) {
-			SDP::Core::updateStatus(STATUS_CRITICAL, "nVidia Ethernet card issue detected");
-		} else {
-			SDP::Core::updateStatus(STATUS_ERROR, "No nVidia Ethernet cards, skipping test");
-		}
-	} elsif ( SDP::SUSE::compareKernel('2.6.16.60-0.66.1') == 0) {
-		nicsAffected();
-		if ( $AFFECTED_NICS{NIC_A} ) {
-			SDP::Core::updateStatus(STATUS_ERROR, "nVidia NIC PCI-ID 0x0373 driver updated");
-		}
-		if ( $AFFECTED_NICS{NIC_B} ) {
-			SDP::Core::updateStatus(STATUS_CRITICAL, "nVidia NIC PCI-ID 0x0057 driver update needed");
-		}
-	} else {
-		SDP::Core::updateStatus(STATUS_ERROR, "ERROR: Outside kernel scope, skipping nVidea NIC test");
-	}
+checkCPUcs();
 SDP::Core::printPatternResults();
-
 exit;
 
