@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Jan 31 19:41:38 UTC 2014 - jrecord@suse.com
+
+- added
+  sle10all/net-7007649.py
+- includes pertinent patterns from sca-patterns-sleall
+- includes pertinent patterns from sca-patterns-samba
+- includes pertinent patterns from sca-patterns-basic
+
+-------------------------------------------------------------------
+Thu Jan 16 10:52:41 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 20 10:52:41 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+- added
+  firefox-SUSE-SU-2013_1678-1d.pl sle10sp4
+  firefox-SUSE-SU-2013_1678-1e.pl sle10sp3
+  java-SUSE-SU-2013_1677-23.pl sle10sp3
+  java-SUSE-SU-2013_1677-2d.pl sle10sp4
+  javaibm-SUSE-SU-2013_1669-1a.pl sle10sp4
+  javaibm-SUSE-SU-2013_1669-1b.pl sle10sp3
+
