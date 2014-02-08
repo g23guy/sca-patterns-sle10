@@ -1,4 +1,4 @@
-# spec file for package sca-patterns-base
+# spec file for package sca-patterns-sle10
 #
 # Copyright (C) 2014 SUSE LLC
 #
