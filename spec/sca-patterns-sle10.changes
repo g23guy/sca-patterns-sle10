@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 13 16:52:21 UTC 2014 - jrecord@suse.com
+
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
 Thu Mar  6 18:06:16 UTC 2014 - jrecord@suse.com
 
 - Fixed out of range index errors
