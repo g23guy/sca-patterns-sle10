@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
-Thu Mar 20 14:13:13 UTC 2014 - jrecord@suse.com
+Thu Mar 20 15:50:04 UTC 2014 - jrecord@suse.com
 
+- Removed duplicates with fdupes
 - Fixed FSF address in all patterns
 
 -------------------------------------------------------------------

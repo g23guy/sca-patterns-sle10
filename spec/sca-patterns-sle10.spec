@@ -16,6 +16,7 @@
 %define patgrp root
 %define mode 544
 %define category SLE
+%define fdupes
 
 Name:         sca-patterns-sle10
 Summary:      Supportconfig Analysis Patterns for SLE10
@@ -24,10 +25,11 @@ Group:        System/Monitoring
 License:      GPL-2.0
 Autoreqprov:  on
 Version:      1.3
-Release:      10.1
+Release:      11
 Source:       %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}
 Buildarch:    noarch
+BuildRequires: fdupes
 Requires:     sca-patterns-base
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
@@ -60,6 +62,7 @@ install -m %{mode} patterns/%{category}/sle10sp1/* $RPM_BUILD_ROOT/%{patdir}/%{c
 install -m %{mode} patterns/%{category}/sle10sp2/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp2
 install -m %{mode} patterns/%{category}/sle10sp3/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp3
 install -m %{mode} patterns/%{category}/sle10sp4/* $RPM_BUILD_ROOT/%{patdir}/%{category}/sle10sp4
+%fdupes %{buildroot}
 
 %files
 %defattr(-,%{patuser},%{patgrp})
