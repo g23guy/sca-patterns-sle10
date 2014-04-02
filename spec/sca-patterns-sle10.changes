@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
-Wed Apr  2 17:39:49 UTC 2014 - jrecord@suse.com
+Wed Apr  2 21:41:00 UTC 2014 - jrecord@suse.com
 
-- New Patterns
+- New Security Patterns
+  sle10sp4/javaibm-SUSE-SU-2014_0266-3.pl
+  sle10sp3/javaibm-SUSE-SU-2014_0266-1.pl
   sle10sp4/libxml2-SUSE-SU-2013_1627-1.pl
   sle10sp3/libxml2-SUSE-SU-2013_1625-1.pl
   sle10sp4/mozilla-SUSE-SU-2013_1807-1.pl
