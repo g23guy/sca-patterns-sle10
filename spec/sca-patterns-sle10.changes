@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  2 13:44:44 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/libxml2-SUSE-SU-2013_1625-1.pl
+
+-------------------------------------------------------------------
 Fri Mar 21 18:39:51 UTC 2014 - jrecord@suse.com
 
 - Fixed spec macro
