@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
-Wed Apr  2 13:44:44 UTC 2014 - jrecord@suse.com
+Wed Apr  2 17:39:49 UTC 2014 - jrecord@suse.com
 
 - New Patterns
+  sle10sp4/libxml2-SUSE-SU-2013_1627-1.pl
   sle10sp3/libxml2-SUSE-SU-2013_1625-1.pl
+  sle10sp4/mozilla-SUSE-SU-2013_1807-1.pl
+  sle10sp3/mozilla-SUSE-SU-2013_1807-1.pl
 
 -------------------------------------------------------------------
 Fri Mar 21 18:39:51 UTC 2014 - jrecord@suse.com
