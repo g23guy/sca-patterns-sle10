@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  7 15:33:14 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/xen-SUSE-SU-2014_0411-1.pl
+  sle10sp3/gnutls-SUSE-SU-2014_0320-1.pl
+  sle10sp4/gnutls-SUSE-SU-2014_0321-1.pl
+
+-------------------------------------------------------------------
 Wed Apr  2 21:41:00 UTC 2014 - jrecord@suse.com
 
 - New Security Patterns
