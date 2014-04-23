@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 23 01:46:22 UTC 2014 - jrecord@suse.com
+
+- Fixed subscription-00001.pl uninitialized value $LINE_CONTENT[1]
+
+-------------------------------------------------------------------
 Tue Apr 22 16:32:59 UTC 2014 - jrecord@suse.com
 
 - Fixed Use of uninitialized value in addition in bhc-cpucs-00001.pl
