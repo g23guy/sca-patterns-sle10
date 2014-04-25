@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
-Fri Apr 25 20:41:03 UTC 2014 - jrecord@suse.com
+Fri Apr 25 21:03:21 UTC 2014 - jrecord@suse.com
 
+- Now subscription-00001.pl uses installation_sources
 - Fixed mntspace-00001.pl df error handling
 - Fixed subscription-00001.pl uninitialized value $LINE_CONTENT[1]
 

@@ -2,7 +2,7 @@
 
 # Title:       Checks Subscription to SLE10 Update Channel
 # Description: The server must be subscribed to an update channel to receive updates. 
-# Modified:    2014 Apr 22
+# Modified:    2014 Apr 25
 
 ##############################################################################
 #  Copyright (C) 2014 SUSE LLC
@@ -56,7 +56,7 @@ use SDP::SUSE;
 sub check_subscribed_channel() {
 	SDP::Core::printDebug('> check_subscribed_channel', 'BEGIN');
 	my $FILE_OPEN = 'updates.txt';
-	my $SECTION = 'rug ca';
+	my $SECTION = 'installation_sources -s';
 	my @CONTENT = ();
 	my @LINE_CONTENT = ();
 	my $UP_SLE = '';
@@ -74,8 +74,8 @@ sub check_subscribed_channel() {
 			$_ =~ s/^\s+|\s+$//g;
 			# get the update channels needed if subscribed to them
 			@LINE_CONTENT = split(/\|/, $_);
-			if ( $LINE_CONTENT[1] =~ /SLE.10-SP.-Updates|SLE.10-Updates/i ) {
-				if ( $LINE_CONTENT[0] =~ /yes|ja/i ) {
+			if ( $LINE_CONTENT[4] =~ /SLE.10-SP.-Updates|SLE.10-Updates/i ) {
+				if ( $LINE_CONTENT[1] =~ /yes|ja/i ) {
 					$UPS_SLE = 1; # sub'd to channel
 				} else {
 					$UPS_SLE = 0; # not sub'd to channel, but it exists.
