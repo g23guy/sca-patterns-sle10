@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 21 00:20:15 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/xen-SUSE-SU-2014_0470-1.pl
+
+-------------------------------------------------------------------
 Fri Apr 25 21:03:21 UTC 2014 - jrecord@suse.com
 
 - Now subscription-00001.pl uses installation_sources
