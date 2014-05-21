@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Wed May 21 01:33:53 UTC 2014 - jrecord@suse.com
+Wed May 21 14:21:11 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/strongswan-SUSE-SU-2014_0529-1.pl
+  sle10sp4/strongswan-SUSE-SU-2014_0529-1.pl
+
+-------------------------------------------------------------------
+Wed May 20 11:33:53 UTC 2014 - jrecord@suse.com
 
 - New Patterns
   sle10sp4/kernel-SUSE-SU-2014_0536-1.pl
