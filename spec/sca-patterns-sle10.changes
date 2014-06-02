@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
-Thu May 29 17:44:07 UTC 2014 - jrecord@suse.com
+Mon Jun  2 19:07:03 UTC 2014 - jrecord@suse.com
 
+- Fixed calculation errors in sle10all/parted-00001.pl
 - New Patterns
   sle10sp3/firefox-SUSE-SU-2014_0665-2.pl
 
