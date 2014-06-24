@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 24 20:12:30 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/firefox-SUSE-SU-2014_0727-1.pl
+
+-------------------------------------------------------------------
 Thu Jun 12 18:46:43 UTC 2014 - jrecord@suse.com
 
 - Fixed invalid NTP fields in sle10all/ntp-00002.pl
