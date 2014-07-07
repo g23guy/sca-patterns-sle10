@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  7 16:15:48 UTC 2014 - jrecord@suse.com
+
+- Fixed invalid header processing in mntspace-00001.pl
+
+-------------------------------------------------------------------
 Thu Jun 26 13:59:04 UTC 2014 - jrecord@suse.com
 
 - New Patterns
