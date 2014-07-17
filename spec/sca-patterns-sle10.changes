@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 17 21:27:18 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/php5-SUSE-SU-2014_0873-1.py
+  sle10sp3/php5-SUSE-SU-2014_0873-1.py
+
+-------------------------------------------------------------------
 Mon Jul  7 16:15:48 UTC 2014 - jrecord@suse.com
 
 - Fixed invalid header processing in mntspace-00001.pl
