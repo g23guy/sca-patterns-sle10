@@ -1,8 +1,10 @@
 -------------------------------------------------------------------
-Thu Jul 17 21:27:18 UTC 2014 - jrecord@suse.com
+Thu Jul 17 22:39:54 UTC 2014 - jrecord@suse.com
 
 - New Patterns
+  sle10sp4/firefox-SUSE-SU-2014_0905-1.py
   sle10sp4/php5-SUSE-SU-2014_0873-1.py
+  sle10sp3/firefox-SUSE-SU-2014_0905-1.py
   sle10sp3/php5-SUSE-SU-2014_0873-1.py
 
 -------------------------------------------------------------------
