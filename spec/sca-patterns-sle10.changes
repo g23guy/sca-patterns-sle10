@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 23 22:31:31 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10all/obsrepo-7015683.py
+  sle10sp3/MozillaFirefox_SUSE-SU-2014_1120-1_10.3.py
+  sle10sp3/apache2_SUSE-SU-2014_1082-1_10.3.py
+  sle10sp3/glibc_SUSE-SU-2014_1128-1_10.3.py
+  sle10sp4/MozillaFirefox_SUSE-SU-2014_1120-2_10.4.py
+  sle10sp4/apache2_SUSE-SU-2014_1082-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2014_1119-1_10.4.py
+
+-------------------------------------------------------------------
 Tue Aug 12 20:26:04 UTC 2014 - jrecord@suse.com
 
 - New Patterns
