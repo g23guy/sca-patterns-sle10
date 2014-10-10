@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 10 17:24:54 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp3/apache-7015750.py
+  sle10sp4/apache-7015750.py
+
+-------------------------------------------------------------------
 Fri Oct  3 15:28:58 UTC 2014 - jrecord@suse.com
 
 - New Pattern
