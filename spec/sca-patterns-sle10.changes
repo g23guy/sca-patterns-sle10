@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 18 16:15:21 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/OpenSSL_SUSE-SU-2014_1387-1_10.4.py
+  sle10sp4/wget_SUSE-SU-2014_1408-1_10.4.py
+
+-------------------------------------------------------------------
 Mon Nov 10 20:45:36 UTC 2014 - jrecord@suse.com
 
 - New Pattern
