@@ -2,7 +2,7 @@
 
 # Title:       Checks Subscription to SLE10 Update Channel
 # Description: The server must be subscribed to an update channel to receive updates. 
-# Modified:    2014 Apr 25
+# Modified:    2014 Nov 21
 
 ##############################################################################
 #  Copyright (C) 2014 SUSE LLC
@@ -69,6 +69,8 @@ sub check_subscribed_channel() {
 			next if ( /waking up zmd/i);
 			if ( m/ZMD does not appear to be running/i ) {
 				SDP::Core::updateStatus(STATUS_ERROR, "ZMD does not appear to be running");
+			} elsif ( m/zypper: error/i ) {
+				SDP::Core::updateStatus(STATUS_ERROR, "Detected installation_sources error, aborting");
 			}
 			$_ =~ s/\s+\|\s+/\|/g; # remove white space
 			$_ =~ s/^\s+|\s+$//g;
