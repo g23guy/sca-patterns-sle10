@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 24 20:39:25 UTC 2014 - jrecord@suse.com
+
+- New Pattern
+  sle10sp4/MozillaFirefox_SUSE-SU-2014_1458-3_10.4.py
+
+-------------------------------------------------------------------
 Fri Nov 21 17:20:27 UTC 2014 - jrecord@suse.com
 
 - Fixed uninitialized LINE_CONTENT error in sle10all/subscription-00001.pl
