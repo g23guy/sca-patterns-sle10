@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec  4 23:03:20 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp0/samba_SUSE-SU-2013_0519-1_10.0.py
+  sle10sp3/java_SUSE-SU-2013_0440-3_10.3.py
+  sle10sp3/java_SUSE-SU-2013_0440-6_10.3.py
+  sle10sp3/java_SUSE-SU-2013_0456-2_10.3.py
+  sle10sp4/firefox_SUSE-SU-2013_0471-1_10.4.py
+  sle10sp4/gnutls_SUSE-SU-2013_1060-1_10.4.py
+
+-------------------------------------------------------------------
 Mon Nov 24 20:39:25 UTC 2014 - jrecord@suse.com
 
 - New Pattern
