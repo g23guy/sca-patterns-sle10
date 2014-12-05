@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Dec  5 21:54:49 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp2/apache_SUSE-SU-2011_1216-1_10.2.py
+  sle10sp2/bind_SUSE-SU-2011_1270-2_10.2.py
+  sle10sp2/quagga_SUSE-SU-2011_1316-1_10.2.py
+  sle10sp3/apache_SUSE-SU-2011_1010-1_10.3.py
+  sle10sp3/apache_SUSE-SU-2011_1229-1_10.3.py
+  sle10sp3/bind_SUSE-SU-2011_1270-1_10.3.py
+  sle10sp3/compat-openssl097g_SUSE-SU-2011_0847-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_0727-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_0967-1_10.3.py
+  sle10sp3/firefox_SUSE-SU-2011_1096-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0807-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0863-1_10.3.py
+  sle10sp3/java_SUSE-SU-2011_0966-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_0711-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_0737-1_10.3.py
+  sle10sp3/kernel_SUSE-SU-2011_1058-1_10.3.py
+  sle10sp3/libgssglue_SUSE-SU-2011_0696-1_10.3.py
+  sle10sp3/nss_SUSE-SU-2011_1042-1_10.3.py
+  sle10sp3/openssl-certs_SUSE-SU-2011_0995-1_10.3.py
+  sle10sp3/pam_SUSE-SU-2011_1209-1_10.3.py
+  sle10sp3/popt_SUSE-SU-2011_1140-2_10.3.py
+  sle10sp3/pure-ftpd_SUSE-SU-2011_1029-1_10.3.py
+  sle10sp3/quagga_SUSE-SU-2011_1075-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2011_1057-1_10.3.py
+  sle10sp4/apache_SUSE-SU-2011_1007-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_0608-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_0759-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2011_1268-1_10.4.py
+  sle10sp4/compat-openssl097g_SUSE-SU-2011_0847-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_0727-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_0967-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2011_1096-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0614-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0640-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_0894-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_1063-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2011_1244-1_10.4.py
+  sle10sp4/freetype2_SUSE-SU-2011_1306-1_10.4.py
+  sle10sp4/jasper_SUSE-SU-2011_1317-2_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0632-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0807-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0863-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_0966-1_10.4.py
+  sle10sp4/java_SUSE-SU-2011_1298-1_10.4.py
+  sle10sp4/kernel_SUSE-SU-2011_0899-1_10.4.py
+  sle10sp4/kernel_SUSE-SU-2011_1195-1_10.4.py
+  sle10sp4/libgssglue_SUSE-SU-2011_0696-1_10.4.py
+  sle10sp4/mozilla-nss_SUSE-SU-2011_1256-2_10.4.py
+  sle10sp4/mozillafirefox_SUSE-SU-2011_1266-1_10.4.py
+  sle10sp4/nss_SUSE-SU-2011_1042-1_10.4.py
+  sle10sp4/openssl-certs_SUSE-SU-2011_0995-1_10.4.py
+  sle10sp4/pam_SUSE-SU-2011_1205-1_10.4.py
+  sle10sp4/popt_SUSE-SU-2011_1140-2_10.4.py
+  sle10sp4/pure-ftpd-debuginfo_SUSE-SU-2011_1028-1_10.4.py
+  sle10sp4/quagga_SUSE-SU-2011_1075-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2011_1239-1_10.4.py
+  sle10sp4/subversion_SUSE-SU-2011_0692-1_10.4.py
+  sle10sp4/vpnc_SUSE-SU-2011_0980-1_10.4.py
+  sle10sp4/wireshark_SUSE-SU-2011_1262-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2011_0925-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2011_0983-1_10.4.py
+  sle10sp4/xorg-x11_SUSE-SU-2011_1035-2_10.4.py
+
+-------------------------------------------------------------------
 Fri Dec  5 20:13:19 UTC 2014 - jrecord@suse.com
 
 - New Patterns
