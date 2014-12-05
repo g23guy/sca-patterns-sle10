@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Dec  5 20:13:19 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle10sp0/samba_SUSE-SU-2012_0500-1_10.0.py
+  sle10sp0/samba_SUSE-SU-2012_0591-1_10.0.py
+  sle10sp2/bind_SUSE-SU-2012_0741-5_10.2.py
+  sle10sp2/freetype2_SUSE-SU-2012_0553-1_10.2.py
+  sle10sp2/krb5_SUSE-SU-2012_0010-1_10.2.py
+  sle10sp2/krb5_SUSE-SU-2012_0042-1_10.2.py
+  sle10sp2/samba_SUSE-SU-2012_0348-1_10.2.py
+  sle10sp2/samba_SUSE-SU-2012_0501-1_10.2.py
+  sle10sp2/xen_SUSE-SU-2012_0730-1_10.2.py
+  sle10sp2/xen_SUSE-SU-2012_1133-1_10.2.py
+  sle10sp3/bind_SUSE-SU-2012_0741-4_10.3.py
+  sle10sp3/freetype2_SUSE-SU-2012_0483-2_10.3.py
+  sle10sp3/kerberos_SUSE-SU-2012_0018-1_10.3.py
+  sle10sp3/kerberos_SUSE-SU-2012_0050-1_10.3.py
+  sle10sp3/openssl_SUSE-SU-2012_0674-1_10.3.py
+  sle10sp3/samba_SUSE-SU-2012_0337-1_10.3.py
+  sle10sp3/samba_SUSE-SU-2012_0504-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2012_0730-1_10.3.py
+  sle10sp3/xen_SUSE-SU-2012_1129-1_10.3.py
+  sle10sp4/apache2_SUSE-SU-2012_0323-1_10.4.py
+  sle10sp4/bind_SUSE-SU-2012_0741-3_10.4.py
+  sle10sp4/bind_SUSE-SU-2012_1199-1_10.4.py
+  sle10sp4/compat-openssl097g_SUSE-SU-2012_1149-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0221-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0425-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0746-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_0895-1_10.4.py
+  sle10sp4/firefox_SUSE-SU-2012_1167-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0299-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0332-2_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0437-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0592-2_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_0724-1_10.4.py
+  sle10sp4/flash-player_SUSE-SU-2012_1001-2_10.4.py
+  sle10sp4/freetype2_SUSE-SU-2012_0483-1_10.4.py
+  sle10sp4/ghostscript_SUSE-SU-2012_1222-1_10.4.py
+  sle10sp4/gimp_SUSE-SU-2012_1027-1_10.4.py
+  sle10sp4/gimp_SUSE-SU-2012_1038-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2012_0023-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2012_0055-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0114-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0122-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0602-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0603-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_0734-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1177-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1204-1_10.4.py
+  sle10sp4/java_SUSE-SU-2012_1265-1_10.4.py
+  sle10sp4/kerberos_SUSE-SU-2012_0018-1_10.4.py
+  sle10sp4/kerberos_SUSE-SU-2012_0050-1_10.4.py
+  sle10sp4/libexif_SUSE-SU-2012_0902-1_10.4.py
+  sle10sp4/libpng_SUSE-SU-2012_0318-1_10.4.py
+  sle10sp4/libpurple_SUSE-SU-2012_0890-1_10.4.py
+  sle10sp4/libtiff_SUSE-SU-2012_0894-1_10.4.py
+  sle10sp4/libvorbis_SUSE-SU-2012_0326-1_10.4.py
+  sle10sp4/libxml2_SUSE-SU-2012_0117-1_10.4.py
+  sle10sp4/mozillafirefox_SUSE-SU-2012_0688-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0084-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0637-1_10.4.py
+  sle10sp4/openssl_SUSE-SU-2012_0679-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0411-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0598-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_0721-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1034-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1130-1_10.4.py
+  sle10sp4/php5_SUSE-SU-2012_1210-1_10.4.py
+  sle10sp4/pidgin_SUSE-SU-2012_0782-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2012_0086-1_10.4.py
+  sle10sp4/reader_SUSE-SU-2012_0524-1_10.4.py
+  sle10sp4/samba_SUSE-SU-2012_0337-1_10.4.py
+  sle10sp4/samba_SUSE-SU-2012_0504-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2012_0730-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2012_1135-1_10.4.py
+  sle10sp4/xulrunner_SUSE-SU-2012_0298-1_10.4.py
+
+-------------------------------------------------------------------
 Thu Dec  4 23:03:20 UTC 2014 - jrecord@suse.com
 
 - New Patterns
