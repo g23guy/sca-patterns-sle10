@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jan 23 17:30:10 UTC 2015 - jrecord@suse.com
+
+- Makefile includes obnew to commit changes to OBS 
+
+-------------------------------------------------------------------
 Wed Dec 24 19:42:25 UTC 2014 - jrecord@suse.com
 
 - New Pattern
