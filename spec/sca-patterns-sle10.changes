@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 29 14:55:17 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/firefox_SUSE-SU-2015_0171-1_10.4.py
+  sle10sp4/glibc_SUSE-SU-2015_0158-1_10.4.py
+
+-------------------------------------------------------------------
 Fri Jan 23 17:30:10 UTC 2015 - jrecord@suse.com
 
 - Makefile includes obnew to commit changes to OBS 
