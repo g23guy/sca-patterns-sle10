@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Feb 20 18:12:51 UTC 2015 - jrecord@suse.com
+
+- New Patterns
+  sle10sp4/clamav_SUSE-SU-2015_0298-1_10.4.py
+  sle10sp4/xntp_SUSE-SU-2015_0322-1_10.4.py
+
+-------------------------------------------------------------------
 Thu Jan 29 22:04:05 UTC 2015 - jrecord@suse.com
 
 - New Pattern
