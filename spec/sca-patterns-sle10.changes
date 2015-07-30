@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 30 20:28:58 UTC 2015 - jrecord@suse.com
+
+- New Security Pattern
+  sle10sp4/bind_SUSE-SU-2015_1322-1_10.4.py
+
+-------------------------------------------------------------------
 Thu Jul  9 15:26:12 UTC 2015 - jrecord@suse.com
 
 - New Security Patterns
