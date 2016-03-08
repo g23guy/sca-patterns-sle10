@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  8 17:39:11 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/openssl_SUSE-SU-2016_0678-1_10.4.py
+  sle10sp4/xen_SUSE-SU-2016_0658-1_10.4.py
+
+-------------------------------------------------------------------
 Tue Feb 23 19:41:31 UTC 2016 - jrecord@suse.com
 
 - Updated patterns (bsc#953203)
