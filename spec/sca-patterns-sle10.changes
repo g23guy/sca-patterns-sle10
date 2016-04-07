@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  7 18:51:18 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/firefox_SUSE-SU-2016_0820-1_10.4.py
+  sle10sp4/java_SUSE-SU-2016_0776-1_10.4.py
+
+-------------------------------------------------------------------
 Tue Mar  8 17:39:11 UTC 2016 - jrecord@suse.com
 
 - New Security Patterns
