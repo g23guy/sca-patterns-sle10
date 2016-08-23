@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 23 15:46:33 UTC 2016 - jrecord@suse.com
+
+- New Security Patterns
+  sle10sp4/ntp_SUSE-SU-2016_1912-1_10.4.py
+  sle10sp4/yast2-ntp-client_SUSE-SU-2016_2094-1_10.4.py
+
+-------------------------------------------------------------------
 Fri Jun  3 16:31:50 UTC 2016 - jason.record@suse.com
 
 - New Security Patterns
